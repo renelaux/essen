@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#01696f">
   <meta name="description" content="Getränkerechner für den Tresen als installierbare PWA.">
   <link rel="manifest" href="manifest.webmanifest">
-  <title>getraenkerechner-pwa</title>
+  <title>essensrechner-pwa</title>
   <style>
     *,*::before,*::after{box-sizing:border-box}html{color-scheme:light dark;-webkit-text-size-adjust:none;text-size-adjust:none}body{margin:0;min-height:100dvh;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f7f6f2;color:#28251d}button,input{font:inherit}button{border:0;background:none;color:inherit}main{max-width:980px;margin:0 auto;padding:16px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}h1{font-size:clamp(1.25rem,3vw,1.8rem);margin:0}small{color:#7a7974}.topbar{display:flex;gap:8px;flex-wrap:wrap}.pill{padding:10px 14px;border-radius:999px;background:#fbfbf9;border:1px solid #d4d1ca}.summary{position:sticky;top:8px;z-index:2;margin:0 0 16px;padding:16px;border-radius:20px;background:#01696f;color:#f9f8f4;box-shadow:0 12px 32px rgba(0,0,0,.12)}.summary-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.total{font-size:clamp(2rem,7vw,4rem);font-weight:800;line-height:1}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.card{background:#f9f8f5;border:1px solid #d4d1ca;border-radius:20px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.card h2{font-size:1.05rem;line-height:1.2;margin:0 0 8px}.price{font-size:.98rem;color:#7a7974;margin-bottom:10px}.drink-btn{width:100%;min-height:64px;padding:12px 14px;border-radius:16px;background:#01696f;color:#fff;font-size:1.05rem;font-weight:800;line-height:1.2;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;flex-direction:column}.drink-btn span{display:block}.drink-btn .name{font-size:1.08rem}.drink-btn .price-inline{font-size:.95rem;font-weight:700;opacity:.95}.footer-actions{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}.action{min-height:56px;border-radius:18px;font-weight:700;font-size:1rem}.action.primary{background:#01696f;color:#fff}.action.ghost{background:#fbfbf9;border:1px solid #d4d1ca}.line{height:1px;background:#dcd9d5;margin:12px 0}.breakdown{display:flex;flex-direction:column;gap:8px}.row{display:flex;justify-content:space-between;gap:12px;font-size:1rem}.muted{color:#7a7974}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#cedcd8;color:#0f3638;font-weight:700}.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);padding:12px 16px;border-radius:999px;background:#28251d;color:#f9f8f4;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1}@media (prefers-color-scheme: dark){body{background:#171614;color:#cdccca}.pill,.card,.action.ghost{background:#1c1b19;border-color:#393836;color:#cdccca}.muted,.price,small{color:#797876}.summary{background:#4f98a3;color:#171614}.badge{background:#313b3b;color:#cdccca}.line{background:#262523}.drink-btn{background:#4f98a3;color:#171614}}</style>
 </head>
@@ -14,11 +14,11 @@
   <main>
     <header>
       <div>
-        <h1>Getränkerechner</h1>
-        <small>Für mobilen Einsatz am Tresen</small>
+        <h1>Speisenrechner</h1>
+        <small>Für mobilen Einsatz an der Theke</small>
       </div>
       <div class="topbar">
-        <span class="pill badge" id="itemCount">0 Getränke</span>
+        <span class="pill badge" id="itemCount">0 Speisen</span>
       </div>
     </header>
 
@@ -32,10 +32,10 @@
     <section class="products" id="products"></section>
 
   </main>
-  <div class="toast" id="toast">Getränk hinzugefügt</div>
+  <div class="toast" id="toast">Gericht hinzugefügt</div>
   <script>
     const products = [
-      {id:'pils', name:'Pils gez.', price:2.5},
+      {id:'pils', name:'Pommes', price:2.5},
       {id:'weizen', name:'Weizen gez., Weizen 0.0', price:3.0},
       // {id:'weizen00', name:'Weizen 0.0', price:3.0},
       {id:'bier', name:'Stubbi, Radler 0.0', price:2.5},
